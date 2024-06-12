@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "sport-api",
-    "slug": "sport-api",
+    "name": "gif-app",
+    "slug": "gif-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

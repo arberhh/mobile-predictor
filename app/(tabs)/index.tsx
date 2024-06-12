@@ -1,8 +1,12 @@
-import { Image, StyleSheet, Platform, View } from "react-native";
-import { ThemedView } from "@/components/ThemedView";
+import { StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useRandomGifs } from "@/hooks/reactQueryHooks";
 
 export default function HomeScreen() {
-  return <View></View>;
+  const { data, isLoading, error } = useRandomGifs();
+
+  console.log({ data });
+  return <SafeAreaView></SafeAreaView>;
 }
 
 const styles = StyleSheet.create({

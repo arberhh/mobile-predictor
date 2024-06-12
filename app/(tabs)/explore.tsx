@@ -1,9 +1,9 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet, Image, Platform, View } from "react-native";
 
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedView } from "@/components";
 
-export default function TabTwoScreen() {
+export default function Explore() {
   return <View></View>;
 }
 
