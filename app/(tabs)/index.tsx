@@ -9,6 +9,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GifItem, Search } from "@/components";
 import { useSearchGifs } from "@/hooks/useQuery";
+import useSearch from "@/hooks/useSearch";
 
 type ItemProps = {
   title: string;
@@ -17,7 +18,7 @@ type ItemProps = {
 };
 
 export default function HomeScreen() {
-  const [searchTerm, setSearchTerm] = useState<string>("cats");
+  const { searchTerm } = useSearch();
   const { data, isLoading, isError, error } = useSearchGifs(searchTerm);
 
   const renderItem = ({ item }: { item: ItemProps }) => {
@@ -30,39 +31,28 @@ export default function HomeScreen() {
     );
   };
 
-  // Conditional rendering for loading and error states
-  if (isLoading) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size={"large"} color="#000" />
-      </View>
-    );
-  }
-
-  if (isError) {
-    return (
-      <View style={styles.center}>
-        <Text>Error: {error.message}</Text>
-      </View>
-    );
-  }
-
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Search />
-      <FlatList
-        data={data.results}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-      />
+      {isError || isLoading ? (
+        <View style={styles.center}>
+          {isError && <Text>Error: {error.message}</Text>}
+          {isLoading && <ActivityIndicator size={"large"} color="#000" />}
+        </View>
+      ) : (
+        <FlatList
+          data={data.results || []}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    paddingTop: 100,
+    flex: 1,
     alignItems: "center",
   },
   center: {
