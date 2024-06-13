@@ -4,7 +4,7 @@ async function searchGifs(searchTerm: string = "excited") {
   const response = await axiosInstance.get("search", {
     params: {
       q: searchTerm,
-      limit: 5,
+      limit: 20,
     },
   });
 

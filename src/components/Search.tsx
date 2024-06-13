@@ -9,31 +9,26 @@ export default function Search() {
     updateSearchTerm("");
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <Ionicons name="search" size={16} color="black" />
-        <TextInput
-          value={searchTerm}
-          onChangeText={updateSearchTerm}
-          placeholder="Search for GIFs"
-          style={styles.input}
-        />
-        <Ionicons
-          onPress={cleanSearchTerm}
-          name="close"
-          size={16}
-          color="black"
-        />
-      </View>
+    <View style={styles.inputContainer}>
+      <Ionicons name="search" size={16} color="black" />
+      <TextInput
+        value={searchTerm}
+        onChangeText={updateSearchTerm}
+        placeholder="Search for GIFs"
+        autoCapitalize="none"
+        style={styles.input}
+      />
+      <Ionicons
+        onPress={cleanSearchTerm}
+        name="close"
+        size={16}
+        color="black"
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    width: "100%",
-  },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -41,9 +36,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 10,
     backgroundColor: "#f5f5f5",
+    borderWidth: 1,
+    borderColor: "#e0e0e0",
+    marginBottom: 10,
+    width: "95%",
   },
   input: {
     marginHorizontal: 10,
-    width: "80%",
+    flex: 1,
   },
 });

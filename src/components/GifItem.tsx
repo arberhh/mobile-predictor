@@ -1,29 +1,20 @@
 import React from "react";
-import { ImageBackground, StyleSheet, useWindowDimensions } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import { Image } from "expo-image";
-import { ThemedText } from "./ThemedText";
 
 type GifItemProps = {
   gifUrl: string;
-  title: string;
-  subtitle: string;
 };
 
-export const GifItem: React.FC<GifItemProps> = ({
-  gifUrl,
-  title,
-  subtitle,
-}) => {
+export function GifItem({ gifUrl }: GifItemProps) {
   const { width, height } = useWindowDimensions();
   return (
     <Image
       source={{ uri: gifUrl }}
       style={[styles.gifImage, { width: width - 15, height: height / 3 }]}
-    >
-      <ThemedText type="subtitle">{subtitle}</ThemedText>
-    </Image>
+    />
   );
-};
+}
 
 const styles = StyleSheet.create({
   gifItem: {

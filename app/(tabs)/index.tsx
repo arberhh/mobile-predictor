@@ -12,27 +12,19 @@ import { useSearchGifs } from "@/hooks/useQuery";
 import useSearch from "@/hooks/useSearch";
 
 type ItemProps = {
-  title: string;
   media_formats: { tinygif: { url: string } };
-  content_description: string;
 };
 
 export default function HomeScreen() {
   const { searchTerm } = useSearch();
   const { data, isLoading, isError, error } = useSearchGifs(searchTerm);
 
-  const renderItem = ({ item }: { item: ItemProps }) => {
-    return (
-      <GifItem
-        gifUrl={item.media_formats.tinygif.url}
-        title={item.title}
-        subtitle={item.content_description}
-      />
-    );
-  };
+  function renderItem({ item }: { item: ItemProps }) {
+    return <GifItem gifUrl={item.media_formats.tinygif.url} />;
+  }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView  style={styles.container}>
       <Search />
       {isError || isLoading ? (
         <View style={styles.center}>
@@ -54,6 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    paddingBottom: -35
   },
   center: {
     flex: 1,
