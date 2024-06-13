@@ -1,29 +1,73 @@
-import { StyleSheet } from "react-native";
+import { useState } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  View,
+  Text,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRandomGifs } from "@/hooks/reactQueryHooks";
+import { GifItem, Search } from "@/components";
+import { useSearchGifs } from "@/hooks/useQuery";
+
+type ItemProps = {
+  title: string;
+  media_formats: { tinygif: { url: string } };
+  content_description: string;
+};
 
 export default function HomeScreen() {
-  const { data, isLoading, error } = useRandomGifs();
+  const [searchTerm, setSearchTerm] = useState<string>("cats");
+  const { data, isLoading, isError, error } = useSearchGifs(searchTerm);
 
-  console.log({ data });
-  return <SafeAreaView></SafeAreaView>;
+  const renderItem = ({ item }: { item: ItemProps }) => {
+    return (
+      <GifItem
+        gifUrl={item.media_formats.tinygif.url}
+        title={item.title}
+        subtitle={item.content_description}
+      />
+    );
+  };
+
+  // Conditional rendering for loading and error states
+  if (isLoading) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size={"large"} color="#000" />
+      </View>
+    );
+  }
+
+  if (isError) {
+    return (
+      <View style={styles.center}>
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
+  return (
+    <SafeAreaView>
+      <Search />
+      <FlatList
+        data={data.results}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
+  container: {
+    flexGrow: 1,
+    paddingTop: 100,
     alignItems: "center",
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
+  center: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
