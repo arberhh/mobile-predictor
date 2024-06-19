@@ -1,5 +1,5 @@
-import { searchGifs } from "@/services/gifService";
 import { useQuery } from "@tanstack/react-query";
+import { searchGifs } from "@/services/gifService";
 
 export function useSearchGifs(searchTerm: string) {
   return useQuery({

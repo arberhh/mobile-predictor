@@ -24,7 +24,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView  style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Search />
       {isError || isLoading ? (
         <View style={styles.center}>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    paddingBottom: -35
+    paddingBottom: -35,
   },
   center: {
     flex: 1,
