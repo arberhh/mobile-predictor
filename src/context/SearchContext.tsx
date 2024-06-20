@@ -1,12 +1,7 @@
 import { FC, createContext, useState } from "react";
 
-type SearchContextType = {
-  searchTerm: string;
-  updateSearchTerm: (term: string) => void;
-};
-
-const initialState: SearchContextType = {
-  searchTerm: "cats",
+const initialState = {
+  searchTerm: "dogs",
   updateSearchTerm: (term: string) => {},
 };
 

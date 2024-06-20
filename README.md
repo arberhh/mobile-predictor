@@ -1,50 +1,61 @@
-# Welcome to your Expo app 👋
+# GIF App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a React Native application built with Expo that allows users to search for GIFs and add new ones. The app integrates with the Tenor API and uses Formik for form handling and TanStack Query for state management and caching.
 
-## Get started
+## Technologies Used
 
-1. Install dependencies
+- **React Native**: Framework for building native apps using React.
+- **Expo**: A framework and platform for universal React applications.
+- **TanStack Query**: Data fetching and caching library for React.
+- **Axios**: Promise-based HTTP client for the browser and node.js.
 
-   ```bash
-   npm install
-   ```
+## WIP(adding gifs in the query cache)
 
-2. Start the app
+- **Formik**: Library for building and managing forms in React.
+- **Yup**: JavaScript schema builder for validation.
 
-   ```bash
-    npx expo start
-   ```
+## Project Structure
 
-In the output, you'll find options to open the app in a
+The project is structured as follows:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### app/
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+app/
+│
+└── screens/ # Screens or pages of the application
+├── HomeScreen.tsx# Main screen displaying GIF search results
+├── AddGifScreen.tsx # Screen for adding a new GIF
+└── ... # Other screens
 
-## Get a fresh project
+The `app/` folder contains all the screens or pages of the application. Each screen is responsible for displaying different parts of the app's functionality.
 
-When you're ready, run:
+### src/
 
-```bash
-npm run reset-project
-```
+src/
+│
+├── assets/ # Contains images, fonts, and other static assets
+│
+├── components/ # React components used throughout the app
+│ ├── GifItem.tsx # Component for displaying a single GIF
+│ ├── Search.tsx # Component for search functionality
+│ └── ... # Other components
+│
+├── hooks/ # Custom hooks used for state management and logic
+│ ├── useQuery.ts # Hook for querying GIF data using TanStack Query
+│ ├── useSearch.ts # Hook for managing search functionality
+│ └── ... # Other hooks
+│
+├── services/ # Services for interacting with external APIs
+│ ├── gifService.ts # Service for fetching GIF data from Tenor API
+│ └── ... # Other services
+│
+└── utils/ # Utility functions and helper modules
+├── axiosInstance.ts # Configured Axios instance for API requests
+└── ... # Other utility modules
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## API Configuration
 
-## Learn more
+For testing purposes, you can use this Tenor API. Below are the API URL and key used:
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **API URL**: `https://tenor.googleapis.com/v2/`
+- **API Key**: `AIzaSyDAiHolnUWPBXSnLOU1Iihpqs5W5Itebh4`
