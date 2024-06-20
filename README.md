@@ -18,40 +18,12 @@ This is a React Native application built with Expo that allows users to search f
 
 The project is structured as follows:
 
-### app/
+- **Screens (`app/screens/`)**: Contains the main screens or pages of the application.
+- **Components (`src/components/`)**: Reusable React components used throughout the app.
+- **Hooks (`src/hooks/`)**: Custom hooks for state management and logic, including data fetching with TanStack Query.
+- **Services (`src/services/`)**: Services responsible for interacting with external APIs, such as fetching GIFs from the Tenor API.
+- **Utilities (`src/utils/`)**: Utility functions and modules, including `axiosInstance.ts` for handling API requests.
 
-app/
-│
-└── screens/ # Screens or pages of the application
-├── HomeScreen.tsx# Main screen displaying GIF search results
-├── AddGifScreen.tsx # Screen for adding a new GIF
-└── ... # Other screens
-
-The `app/` folder contains all the screens or pages of the application. Each screen is responsible for displaying different parts of the app's functionality.
-
-### src/
-
-src/
-│
-├── assets/ # Contains images, fonts, and other static assets
-│
-├── components/ # React components used throughout the app
-│ ├── GifItem.tsx # Component for displaying a single GIF
-│ ├── Search.tsx # Component for search functionality
-│ └── ... # Other components
-│
-├── hooks/ # Custom hooks used for state management and logic
-│ ├── useQuery.ts # Hook for querying GIF data using TanStack Query
-│ ├── useSearch.ts # Hook for managing search functionality
-│ └── ... # Other hooks
-│
-├── services/ # Services for interacting with external APIs
-│ ├── gifService.ts # Service for fetching GIF data from Tenor API
-│ └── ... # Other services
-│
-└── utils/ # Utility functions and helper modules
-├── axiosInstance.ts # Configured Axios instance for API requests
-└── ... # Other utility modules
 
 ## API Configuration
 
